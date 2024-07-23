@@ -33,3 +33,56 @@ npm install
 ```
 npm run dev
 ```
+
+# Como rodar o projeto utilizando docker ✅
+
+### Crie um arquivo docker-compose.yml
+```
+version: "3.8"
+
+services:
+  backend:
+    image: righttorers/backend:1.0
+    ports:
+      - 3000:3000
+
+    volumes:
+      - backend:/home/backend
+
+  webserver:
+    image: righttorers/web-server:1.0
+
+    ports:
+      - 4000:4000
+
+    volumes:
+      - webserver:/homer/webserver
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'password'
+      MYSQL_ROOT_HOST: '%'
+    
+    ports:
+      - '3306:3306'
+    
+    expose:
+      - '3306'
+
+    volumes:
+      - dbdata:/var/lib/mysql
+    
+volumes:
+  dbdata:
+  backend:
+  webserver:
+```
+### Execute
+```
+docker-compose up -d
+```
+
+
