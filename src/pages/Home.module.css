@@ -1,0 +1,108 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th {
+  background: wheat;
+}
+
+td, th {
+  border: 1px solid #DDDDDD;
+  text-align: left;
+  padding: 8px 15px;
+}
+
+tr:hover {
+  background-color: #F2A27E;
+}
+
+tr:nth-child(even){
+  background-color: #F9D1A9;
+}
+
+.fixTableHead{
+  overflow-y: auto;
+  height: 500px;
+}
+
+.fixTableHead thead th {
+  position: sticky;
+  top: 0;
+}
+
+.containerBtns{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 10px;
+  justify-content: center;
+}
+
+.containerBtns button {
+  padding: .8rem 1.2rem;
+  font-size: 16px;
+  border-radius: .4rem;
+  border: 1px solid;
+  font-weight: 600;
+  transition: .5s;
+}
+
+.readBtn {
+  background-color: #ce1216;
+  color: #FFF;
+}
+
+.readBtn:hover{
+  background-color: #ce1215bb;
+}
+
+.saveBtn {
+  background-color: grey;
+  color: #FFF;
+}
+
+.saveBtn:hover{
+  background-color: rgba(128, 128, 128, 0.658);
+}
+
+.containerSearch{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 10px;
+  justify-content: center;
+}
+
+.containerSearch input {
+  padding: .8rem 1.2rem;
+  border-radius: .4rem;  
+  border: 1px solid;
+
+}
+
+.containerSearch input:hover{
+  border-color: #8d5353;
+}
+.containerSearch input:focus {
+  outline: none;
+  border-color: #D50000;
+  background: white;
+  box-shadow: 0 0 0 .5px #7F0000;
+}
+
+.containerSearch button{
+  padding: .8rem 1.2rem;
+  border-radius: .4rem;
+  border: 1px solid;
+  background-color: #ce1216;
+  color: #FFF;
+  font-weight: 600;
+  font-size: 16px;
+  transition: .5s;
+}
+
+.containerSearch button:hover{
+  background-color: #ce1215bb;
+}
+
+

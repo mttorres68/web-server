@@ -1,0 +1,33 @@
+.formContainer {
+  width: 100vw;
+  /* height: 100vh; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.titleSignUp{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-top: 15px;
+  font-weight: 500;
+}
+
+
+.formContainer form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formContainer form .register{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 15px;
+  gap: 10px;
+}
