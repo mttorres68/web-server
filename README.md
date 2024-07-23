@@ -84,6 +84,34 @@ volumes:
 ```
 docker-compose up -d
 ```
+### Acessar o container MySQL
+```
+docker exec -it back_db bash
+```
+### Conecte-se ao MySQL
+```
+mysql -u root -p
+```
+#### Senha: ```root```
+
+### Crie as tabelas
+```
+CREATE TABLE onu (
+    sn VARCHAR(20) PRIMARY KEY,
+    ont_id int NOT NULL,
+    slot int,
+    port int,
+    state VARCHAR(20)
+);
+
+CREATE TABLE user (
+    user_id int AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+```
+
 # backend
 * Consiste na leitura de arquivos, providos da saida de uma OLT. Com informações sobre as ONUs.
 
