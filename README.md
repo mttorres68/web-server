@@ -38,78 +38,54 @@ npm run dev
 
 ### Crie um arquivo docker-compose.yml
 ```
-version: "3.8"
-
 services:
-  backend:
-    image: righttorers/backend:1.0
-    ports:
-      - 3000:3000
-
-    volumes:
-      - backend:/home/backend
-
-  webserver:
-    image: righttorers/web-server:1.0
-
-    ports:
-      - 4000:4000
-
-    volumes:
-      - webserver:/homer/webserver
-
-  db:
+  mysql-zeus:
     image: mysql:5.7
+    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 'root'
-      MYSQL_DATABASE: 'db'
-      MYSQL_USER: 'password'
-      MYSQL_ROOT_HOST: '%'
-    
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "db"
+      MYSQL_USER: "password"
+      MYSQL_ROOT_HOST: "%"
     ports:
-      - '3306:3306'
-    
+      - "3306:3306"
     expose:
-      - '3306'
-
+      - "3306"
     volumes:
-      - dbdata:/var/lib/mysql
-    
-volumes:
-  dbdata:
-  backend:
+      - mysql-volume-zeus:/var/lib/mysql
+
+  api:
+    container_name: api-zeus
+    image: righttorers/backend:1.0
+    restart: always
+    ports:
+      - 8000:8000
+    depends_on:
+      - mysql-zeus
+
   webserver:
-```
-### Execute
-```
-docker-compose up -d
-```
-### Acessar o container MySQL
-```
-docker exec -it back_db bash
-```
-### Conecte-se ao MySQL
-```
-mysql -u root -p
-```
-#### Senha: ```root```
+    container_name: webserver-zeus
+    image: righttorers/web-server:1.0
+    volumes:
+      - webserver-volume-zeus:/var/www/html
+    depends_on:
+      - api
 
-### Crie as tabelas
-```
-CREATE TABLE onu (
-    sn VARCHAR(20) PRIMARY KEY,
-    ont_id int NOT NULL,
-    slot int,
-    port int,
-    state VARCHAR(20)
-);
+  nginx:
+    container_name: nginx-zeus
+    image: righttorers/nginx:1.0
+    ports:
+      - 80:80
+    volumes:
+      - webserver-volume-zeus:/var/www/html
+    depends_on:
+      - mysql-zeus
+      - api
+      - webserver
 
-CREATE TABLE user (
-    user_id int AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    email VARCHAR(50) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL
-);
+volumes:
+  mysql-volume-zeus:
+  webserver-volume-zeus:
 ```
 
 # backend
