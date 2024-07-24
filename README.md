@@ -1,8 +1,8 @@
-# web-server
-* Consiste na leitura de arquivos, providos da saida de uma OLT. Com informações sobre as ONUs.
+# Web-Server 🌐
+* Consiste na leitura de arquivos, providos da saída de uma OLT. Com informações sobre as ONUs.
 
 
-# Tecnologias Utilizadas
+# Tecnologias Utilizadas 🛠️
 <table>
   <tr>
     <td>NodeJs</td>
@@ -34,7 +34,7 @@ npm install
 npm run dev
 ```
 
-# Como rodar o projeto utilizando docker ✅
+# Como rodar o projeto utilizando docker 🔧
 
 ### Crie um arquivo docker-compose.yml
 ```
@@ -87,12 +87,15 @@ volumes:
   mysql-volume-zeus:
   webserver-volume-zeus:
 ```
+### Executar docker-compose
+```
+docker compose up -d
+```
+# Backend 🔙
+* Consiste na leitura de arquivos, providos da saída de uma OLT. Com informações sobre as ONUs.
 
-# backend
-* Consiste na leitura de arquivos, providos da saida de uma OLT. Com informações sobre as ONUs.
 
-
-# Tecnologias Utilizadas
+# Tecnologias Utilizadas 🛠️
 <table>
   <tr>
     <td>NodeJs</td>
