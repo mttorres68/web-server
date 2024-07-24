@@ -60,7 +60,7 @@ export default function Home() {
 
   return (
     <div>
-      {onu && onu.length === 0 && !readOnu ? (
+      {onu && onu.length === 0 ? (
         <div className={style.containerBtns}>
           {!readOnu ? (
             <button onClick={readFileOnu} className={style.readBtn}>
